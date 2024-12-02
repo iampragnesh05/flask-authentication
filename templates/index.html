@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+{% block content %}
+
+<div class="box">
+  <h1>Flask Authentication</h1>
+
+  <!-- Show the Login/Registration buttons only if the user is NOT logged in -->
+  {% if not current_user.is_authenticated %}
+    <a href="{{ url_for('login') }}" class="btn btn-primary btn-block btn-large">Login</a>
+    <a href="{{ url_for('register') }}" class="btn btn-secondary btn-block btn-large">Register</a>
+  {% else %}
+    <!-- Optionally, show a message for logged-in users -->
+    <p>You are already logged in, {{ current_user.name }}!</p>
+  {% endif %}
+</div>
+
+{% endblock %}
